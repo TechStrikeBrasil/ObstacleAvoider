@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    int bumpCount = 0;
-   void OnCollisionEnter(Collision collision)
-   {
-       bumpCount++;
-       Debug.Log("You've bumped into the walls " + bumpCount + " times.");
-   }
+    [SerializeField] int bumpCount = 0;
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Hit") { return; }
+        bumpCount++;
+        Debug.Log("You've bumped into the walls " + bumpCount + " times.");
+    }
 }
